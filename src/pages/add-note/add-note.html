@@ -1,0 +1,37 @@
+
+<ion-header>
+
+    <ion-navbar>
+        <ion-toolbar>
+          <ion-title color="light">Add Note</ion-title>
+          <ion-buttons end>
+              <form [formGroup]="formGroup" (ngSubmit)="saveNote(formGroup.value)">
+              <button ion-button color="light" type="submit" [disabled]="!formGroup.valid"><ion-icon name="checkmark"></ion-icon></button>
+              </form>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-navbar>
+    
+</ion-header>
+
+
+<ion-content padding class="add-note">
+  <form [formGroup]="formGroup" (ngSubmit)="saveNote(formGroup.value)">
+      <ion-item>
+          <ion-label>Date</ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" formControlName="date"></ion-datetime>
+        </ion-item>
+    <ion-item>
+      <ion-label>Title</ion-label>
+      <ion-input type="text" name="title" formControlName="title"></ion-input>
+      <div class="alert" *ngIf="!formGroup.controls['title'].valid
+      && formGroup.controls['title'].touched"> {{ titleAlert }}</div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Note</ion-label>
+      <ion-input type="text" name="content" formControlName="content"></ion-input>
+      <div class="alert" *ngIf="!formGroup.controls['content'].valid 
+      && formGroup.controls['content'].touched"> {{ contentAlert}}</div>
+    </ion-item>
+  </form>
+</ion-content>

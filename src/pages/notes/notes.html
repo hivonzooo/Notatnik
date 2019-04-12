@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-toolbar>
+      <ion-title color="light">Notes</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only color="light" (click)="addNote()"><ion-icon name="create"></ion-icon></button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="notes">
+  <ion-list>
+    <button ion-item *ngFor="let note of notes | async" (click)="getNote(note.createDate)">
+      {{ note.title }}
+    </button>
+  </ion-list>
+</ion-content>
